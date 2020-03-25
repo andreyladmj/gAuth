@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package userpb;
+
+option go_package="userpb";
+
+message User {
+    string name = 1;
+    string email = 2;
+    string picture = 3;
+    string gender = 4;
+    string locale = 5;
+    string created = 6;
+}
+
+message AuthRequest {
+    string token = 1;
+}
+
+message AuthResponse {
+    User user = 1;
+    int32 status = 2;
+    string error = 3;
+}
+
+service AuthService{
+    rpc GetUser(AuthRequest) returns (AuthResponse) {};
+}
